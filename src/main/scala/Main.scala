@@ -42,10 +42,10 @@ object Main extends App {
 
   val fsm2 = new ScalaFSM[Registered]("anID")
 
-  val (s2, r1) = fsm2(AllocateMessage("id1"))
+  val (s2, r1) = fsm2(AllocateCommand("id1"))
   println(r1)
 
-  val (s3, r2) = s2(DeallocateMessage("id2"))
+  val (s3, r2) = s2(DeallocateCommand("id2"))
   println(r2)
 
   //val (s4, r3) = s3(DeallocateMessage("id2"))
