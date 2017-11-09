@@ -11,7 +11,9 @@ import scala.collection.concurrent.TrieMap
 import scala.concurrent.duration._
 
 object Main extends App {
+  println
   // Part 1, simple FSM
+  println("------------------------Part1, simple FSM------------------------")
   def printFSMState(fsm: Message2): Unit = println(s"The state of the FSM is: ${fsm.simpleFSM.fsmStatus} with message: ${fsm.getClass}")
   val fsm1 = FSM("anID", Registered)
 
@@ -33,9 +35,11 @@ object Main extends App {
   //  val command3 = AllocateCommand("anotherID")
   //  val c5 = fsm1(command3)
   //  printFSMState(c5)
-
+  println
   // --------------------------------------------------------------
   // Part 2, complex FSM
+  println("------------------------Part2, complex FSM------------------------")
+
   val fsm2 = new ScalaFSM[Registered]("anID")
 
   val (s2, r1) = fsm2(AllocateMessage("id1"))
@@ -46,9 +50,11 @@ object Main extends App {
 
   //val (s4, r3) = s3(DeallocateMessage("id2"))
 
-
+  println
   // --------------------------------------------------------------
   // Part 3, Actors baby!
+  println("------------------------Part3, Actors baby!------------------------")
+
   val system = ActorSystem("HelloSystem")
   val fsmActor = system.actorOf(Props[FSMActor], name = "actor")
   val defaultTimeout = Timeout(10.seconds)
